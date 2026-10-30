@@ -207,7 +207,7 @@ class BrowserUseAgent:
         timed_out = False
         t0 = time.time()
         try:
-            history = await asyncio.wait_for(agent.run(), timeout=self.timeout)
+            history = await asyncio.wait_for(agent.run(max_steps=self.max_steps), timeout=self.timeout)
         except asyncio.TimeoutError:
             timed_out = True
             history = agent.history
